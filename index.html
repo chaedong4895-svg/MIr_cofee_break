@@ -233,7 +233,7 @@ const S = {
   set(k, v) {
     localStorage.setItem(k, JSON.stringify(v));
     // Firebase 백그라운드 동기화 (fire-and-forget)
-    const fbUrl = localStorage.getItem('mir_firebase_url');
+    const fbUrl = localStorage.getItem('mir_firebase_url')|| 'https://mir2026-default-rtdb.firebaseio.com/mir';
     if (fbUrl && k.startsWith('mir_') && k !== 'mir_api_key' && k !== 'mir_firebase_url') {
       const path = k.replace('mir_', '');
       fetch(`${fbUrl}/${path}.json`, {
